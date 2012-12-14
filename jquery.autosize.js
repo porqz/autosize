@@ -106,6 +106,9 @@
 					initMirror();
 				}
 
+				var textareaOuterHeight = $ta.outerHeight(),
+					textareaInnerHeight = $ta.height();
+
 				// the active flag keeps IE from tripping all over itself.  Otherwise
 				// actions in the adjust function will cause IE to call adjust again.
 				if (!active) {
@@ -140,6 +143,11 @@
 							options.callback.call(ta);
 						}
 					}
+
+					var textareaNewOuterHeight = height + textareaOuterHeight - textareaInnerHeight,
+						documentNewScrollTop = $(document).scrollTop() + textareaNewOuterHeight - textareaOuterHeight;
+
+					$(document).scrollTop(documentNewScrollTop);
 					
 					// This small timeout gives IE a chance to draw it's scrollbar
 					// before adjust can be run again (prevents an infinite loop).
@@ -147,6 +155,8 @@
 						active = false;
 					}, 1);
 				}
+
+
 			}
 
 			if (onpropertychange in ta) {
