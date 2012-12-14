@@ -7,7 +7,8 @@
 	defaults = {
 		className: 'autosizejs',
 		append: "",
-		callback: false
+		callback: false,
+		pageAutoScroll: true
 	},
 	hidden = 'hidden',
 	borderBox = 'border-box',
@@ -144,10 +145,12 @@
 						}
 					}
 
-					var textareaNewOuterHeight = height + textareaOuterHeight - textareaInnerHeight,
-						documentNewScrollTop = $(document).scrollTop() + textareaNewOuterHeight - textareaOuterHeight;
+					if (options.pageAutoScroll) {
+						var textareaNewOuterHeight = height + textareaOuterHeight - textareaInnerHeight,
+							documentNewScrollTop = $(document).scrollTop() + textareaNewOuterHeight - textareaOuterHeight;
 
-					$(document).scrollTop(documentNewScrollTop);
+						$(document).scrollTop(documentNewScrollTop);
+					}
 					
 					// This small timeout gives IE a chance to draw it's scrollbar
 					// before adjust can be run again (prevents an infinite loop).

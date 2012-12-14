@@ -26,7 +26,10 @@
 		<script>
 			$(function(){
 				$('#normal').autosize();
-				$('#animated').autosize({append: "\n"});
+				$('#animated').autosize({
+					append: "\n",
+					pageAutoScroll: false
+				});
 			});
 		</script>
 	</head>
