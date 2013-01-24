@@ -144,7 +144,7 @@
 							options.callback.call(ta);
 						}
 
-						ta.trigger("resize");
+						$ta.trigger("resize");
 					}
 
 					if (options.pageAutoScroll) {
