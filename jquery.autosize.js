@@ -143,6 +143,8 @@
 						if (callback) {
 							options.callback.call(ta);
 						}
+
+						ta.trigger("resize");
 					}
 
 					if (options.pageAutoScroll) {
