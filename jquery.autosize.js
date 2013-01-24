@@ -108,7 +108,9 @@
 				}
 
 				var textareaOuterHeight = $ta.outerHeight(),
-					textareaInnerHeight = $ta.height();
+					textareaInnerHeight = $ta.height(),
+
+					textareaOffset = $ta.offset();
 
 				// the active flag keeps IE from tripping all over itself.  Otherwise
 				// actions in the adjust function will cause IE to call adjust again.
@@ -149,7 +151,8 @@
 
 					if (options.pageAutoScroll) {
 						var textareaNewOuterHeight = height + textareaOuterHeight - textareaInnerHeight,
-							documentNewScrollTop = $(document).scrollTop() + textareaNewOuterHeight - textareaOuterHeight;
+							textareaNewOffset = $ta.offset(),
+							documentNewScrollTop = $(document).scrollTop() + (textareaNewOffset.top + textareaNewOuterHeight) - (textareaOffset.top + textareaOuterHeight);
 
 						$(document).scrollTop(documentNewScrollTop);
 					}
